@@ -1,0 +1,113 @@
+# Magpie for DSM: the upstream magpie web panel behind DSM administrator
+# sign-in, and magpie's own model gateway on its native port with magpie
+# gateway keys (no DSM authentication).
+schema: 2
+
+package: Magpie
+version: 0.1.3093
+build: 7
+displayname: Magpie
+description: "Every agent's model in one place: a local model gateway and its web panel, packaged for DSM."
+# The original project is the maintainer; this fork's packager is the distributor.
+maintainer: yetone
+os_min_ver: "7.2.1-69057"
+arches: [x86_64, aarch64]
+# magpie's own app icon (upstream build/windows/icon-256.png); the build scales
+# it to every size DSM loads for the menu, desktop, window and taskbar.
+icon: assets/icon.png
+
+# The DSM menu icon and Package Center's Open start the gateway entry, which
+# signs a DSM administrator in and forwards to magpie's own web panel. There is
+# no SDK window: magpie's panel is the App's only UI.
+ui: false
+entry: admin-only
+
+# The small SDK CGI behind the DSM entry policy; magpie's panel is the App's UI.
+backend:
+  kind: go
+  dir: backend
+  main: ./cmd/app
+
+# The gateway's public HTTPS port is chosen in the install wizard.
+install:
+  ports: true
+
+# magpie serve runs the model gateway on 3425 and the panel on loopback 3430.
+# The panel is reached only through the DSM identity gateway.
+daemon:
+  # magpie-launch derives MAGPIE_PUBLIC_URL from this NAS (default-route
+  # address, never loopback or a container bridge) and execs magpie, so the
+  # panel advertises the right address on every NAS without a hard-coded one.
+  exec: magpie-launch
+  targets:
+    x86_64: daemon/x86_64
+    aarch64: daemon/aarch64
+  args:
+    - serve
+    - --web=127.0.0.1:3430
+  env:
+    # magpie listens beyond loopback here, so other machines are answered only
+    # with an enabled magpie gateway key: magpie's own token mode, not DSM.
+    MAGPIE_ADDR: "0.0.0.0:3425"
+    # The panel's own access key. The DSM gateway injects it server-side
+    # (identity_gateway.token), so the browser never receives it.
+    MAGPIE_WEB_KEY: "c48efae5ea6edc1914d9bc9ccb4872b1"
+    # The gateway reaches the panel over loopback with forwarding headers set:
+    # trust them from this package's own gateway, never from the network.
+    MAGPIE_TRUST_PROXY: "true"
+    # magpie keeps its own updater: it replaces this payload binary and
+    # re-execs itself, which the daemon supervisor allows because its digest
+    # covers daemon/config.json, not the payload. A later SPK upgrade replaces
+    # the binary again, so the packaged version is the floor, not a pin.
+    MAGPIE_NO_STATS: "1"
+  timeouts:
+    start: 30
+    stop: 30
+    status: 5
+    uninstall: 60
+
+identity_gateway:
+  sdk: 0.50.16
+  # A DSM administrator signs in; the fixed token adapter then supplies
+  # magpie's own panel key, so there is no second App password.
+  mode: token
+  access: dsm-admins
+  upstream: 3430
+  listen:
+    https: 28443
+  token:
+    exec: webtoken
+    args: ["magpie_web_3430"]
+  # magpie serves a community plugin's page (and the local service behind it)
+  # under a per-run token path, and shows it in a sandboxed frame. A sandboxed
+  # frame is an opaque origin, so the browser withholds this App's SameSite
+  # cookies and the gateway would answer every page asset with
+  # dsm_sign_in_required. These paths are the upstream-authenticated kind the
+  # gateway documents: magpie's unguessable per-run token protects them and the
+  # response is CSP-sandboxed with connect-src 'none'. Every other path (the
+  # panel, /api, the SDK routes) still needs DSM administrator sign-in.
+  upstream_auth_paths: ["/_magpie/plugin"]
+
+metadata:
+  license: MIT
+  homepage: https://usemagpie.ai
+  source_url: https://github.com/yetone/magpie
+  issues_url: https://github.com/yetone/magpie/issues
+  maintainer_url: https://github.com/yetone/magpie
+  # The catalog rule for upstream Apps: the upstream owner is the maintainer and
+  # Syno Package Land is the distributor that builds and hosts this SPK.
+  distributor: Syno Package Land
+  distributor_url: https://synopkgland.com/
+  upstream:
+    name: magpie
+    url: https://github.com/yetone/magpie
+  long_description:
+    en: |-
+      Magpie keeps every coding agent's model in one place. On DSM it runs as a
+      package service: the panel opens from the DSM main menu for administrators,
+      and the model gateway serves the LAN on port 3425 with magpie's own gateway
+      keys.
+    zh-TW: |-
+      Magpie 把每個 coding agent 的模型集中在一處。在 DSM 上以套件服務執行：
+      管理員從 DSM 主選單開啟面板，模型閘道以 Magpie 自己的 gateway key 在
+      3425 埠對區域網路提供服務。

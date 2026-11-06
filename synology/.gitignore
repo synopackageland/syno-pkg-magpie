@@ -1,0 +1,10 @@
+dist/
+
+# Private NAS smoke sessions and credentials
+.e2e/
+.env
+
+# Architecture payloads are rebuilt by build-source.sh
+/daemon/x86_64/
+/daemon/aarch64/
+node_modules/

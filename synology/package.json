@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "npm run test:adapter",
+    "test:adapter": "cd adapter && go test ./...",
+    "test:local": "node --test tests/local/*.test.mjs"
+  },
+  "devDependencies": {
+    "@synopackageland/cli": "~0.48.20"
+  }
+}
