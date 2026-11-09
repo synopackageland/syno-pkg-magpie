@@ -13,6 +13,13 @@ This directory is the whole wrapper. Every file here is packaging; the upstream
 tree stays byte-identical and is only compiled. Package Center distribution is
 by Syno Package Land; the upstream project is the maintainer.
 
+## Current rebuild
+
+Package 0.1.3093-0008 uses SDK/App 0.53.21 and CLI 0.52.13 to improve page
+loading reliability when signing in. The upstream version, daemon, authentication
+policy and updater behavior are unchanged. Validation is limited to check, build,
+baseline inspect and leak scans; tests and NAS checks were not run.
+
 ## What runs
 
 ```text

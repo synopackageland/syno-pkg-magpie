@@ -5,7 +5,7 @@ schema: 2
 
 package: Magpie
 version: 0.1.3093
-build: 7
+build: 8
 displayname: Magpie
 description: "Every agent's model in one place: a local model gateway and its web panel, packaged for DSM."
 # The original project is the maintainer; this fork's packager is the distributor.
@@ -67,7 +67,7 @@ daemon:
     uninstall: 60
 
 identity_gateway:
-  sdk: 0.50.16
+  sdk: 0.53.21
   # A DSM administrator signs in; the fixed token adapter then supplies
   # magpie's own panel key, so there is no second App password.
   mode: token
