@@ -7,6 +7,6 @@
     "test:local": "node --test tests/local/*.test.mjs"
   },
   "devDependencies": {
-    "@synopackageland/cli": "~0.52.13"
+    "@synopackageland/cli": "~0.53.16"
   }
 }

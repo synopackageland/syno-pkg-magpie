@@ -5,7 +5,7 @@ schema: 2
 
 package: Magpie
 version: 0.1.3093
-build: 8
+build: 9
 displayname: Magpie
 description: "Every agent's model in one place: a local model gateway and its web panel, packaged for DSM."
 # The original project is the maintainer; this fork's packager is the distributor.

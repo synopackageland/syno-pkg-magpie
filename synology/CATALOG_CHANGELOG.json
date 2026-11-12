@@ -1,11 +1,11 @@
 {
-  "en": "Improve page loading reliability when signing in",
-  "zh-TW": "改善登入時的頁面載入穩定性",
-  "zh-CN": "改善登录时的页面加载稳定性",
-  "ja": "ログイン時のページ読み込みの安定性を改善",
-  "ko": "로그인 시 페이지 로딩 안정성 개선",
-  "de": "Zuverlässigkeit beim Laden der Seite während der Anmeldung verbessern",
-  "fr": "Améliorer la fiabilité du chargement des pages lors de la connexion",
-  "es": "Mejorar la fiabilidad de carga de las páginas al iniciar sesión",
-  "it": "Migliorare l’affidabilità del caricamento delle pagine durante l’accesso"
+  "en": "Improve installation reliability in Package Center",
+  "zh-TW": "提升在套件中心安裝的穩定性",
+  "zh-CN": "提升在套件中心安装的稳定性",
+  "ja": "パッケージセンターでのインストールの安定性を向上",
+  "ko": "패키지 센터에서의 설치 안정성 향상",
+  "de": "Zuverlässigkeit der Installation im Paket-Zentrum verbessern",
+  "fr": "Améliorer la fiabilité de l’installation dans le Centre de paquets",
+  "es": "Mejorar la fiabilidad de la instalación en el Centro de paquetes",
+  "it": "Migliorare l’affidabilità dell’installazione nel Centro pacchetti"
 }
