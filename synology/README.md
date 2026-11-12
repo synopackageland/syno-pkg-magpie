@@ -15,10 +15,12 @@ by Syno Package Land; the upstream project is the maintainer.
 
 ## Current rebuild
 
-Package 0.1.3093-0008 uses SDK/App 0.53.21 and CLI 0.52.13 to improve page
-loading reliability when signing in. The upstream version, daemon, authentication
-policy and updater behavior are unchanged. Validation is limited to check, build,
-baseline inspect and leak scans; tests and NAS checks were not run.
+Package 0.1.3093-0009 uses SDK/App 0.53.21 and CLI 0.53.16 to improve
+installation reliability in Package Center: the gateway nginx reload is declared
+only for start and stop, not for install or uninstall. The upstream version,
+daemon, authentication policy and updater behavior are unchanged. Validation is
+limited to check, build, baseline inspect and leak scans; tests and NAS checks
+were not run.
 
 ## What runs
 
