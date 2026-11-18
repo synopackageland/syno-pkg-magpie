@@ -1,11 +1,11 @@
 {
-  "en": "Improve installation reliability in Package Center",
-  "zh-TW": "提升在套件中心安裝的穩定性",
-  "zh-CN": "提升在套件中心安装的稳定性",
-  "ja": "パッケージセンターでのインストールの安定性を向上",
-  "ko": "패키지 센터에서의 설치 안정성 향상",
-  "de": "Zuverlässigkeit der Installation im Paket-Zentrum verbessern",
-  "fr": "Améliorer la fiabilité de l’installation dans le Centre de paquets",
-  "es": "Mejorar la fiabilidad de la instalación en el Centro de paquetes",
-  "it": "Migliorare l’affidabilità dell’installazione nel Centro pacchetti"
+  "en": "Update to upstream magpie 0.1.4404 with gateway, routing and usage improvements; Antigravity now runs through the local agy CLI",
+  "zh-TW": "更新至上游 magpie 0.1.4404，改善閘道、路由與用量統計；Antigravity 改由本機 agy CLI 提供",
+  "zh-CN": "更新至上游 magpie 0.1.4404，改进网关、路由与用量统计；Antigravity 改由本地 agy CLI 提供",
+  "ja": "上流の magpie 0.1.4404 に更新し、ゲートウェイ、ルーティング、使用量の集計を改善。Antigravity はローカルの agy CLI 経由で動作",
+  "ko": "업스트림 magpie 0.1.4404로 업데이트해 게이트웨이, 라우팅, 사용량 집계를 개선하고 Antigravity는 로컬 agy CLI로 실행",
+  "de": "Auf Upstream-magpie 0.1.4404 aktualisieren, mit Verbesserungen an Gateway, Routing und Nutzungserfassung; Antigravity läuft jetzt über die lokale agy-CLI",
+  "fr": "Mettre à jour vers magpie 0.1.4404 en amont, avec des améliorations de la passerelle, du routage et du suivi d’utilisation ; Antigravity passe désormais par la CLI agy locale",
+  "es": "Actualizar a magpie 0.1.4404 de origen, con mejoras en la pasarela, el enrutamiento y el registro de uso; Antigravity funciona ahora mediante la CLI local de agy",
+  "it": "Aggiornare a magpie 0.1.4404 upstream, con miglioramenti a gateway, instradamento e registrazione dell’utilizzo; Antigravity ora funziona tramite la CLI agy locale"
 }

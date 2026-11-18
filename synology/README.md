@@ -4,7 +4,7 @@ A native DSM package that runs the upstream [magpie](https://github.com/yetone/m
 web panel behind DSM administrator sign-in, and magpie's own model gateway on
 its native port for the rest of the LAN.
 
-- Upstream: `https://github.com/yetone/magpie` (MIT), version `0.1.3093`
+- Upstream: `https://github.com/yetone/magpie` (MIT), version `0.1.4404`
 - Package: `Magpie`, DSM 7.2.1-69057 or later, `x86_64` and `aarch64`
 - Unsigned SPK: install with Package Center → Manual Install
 - Runs as the package account, no containers and no root
@@ -13,14 +13,14 @@ This directory is the whole wrapper. Every file here is packaging; the upstream
 tree stays byte-identical and is only compiled. Package Center distribution is
 by Syno Package Land; the upstream project is the maintainer.
 
-## Current rebuild
+## Current release
 
-Package 0.1.3093-0009 uses SDK/App 0.53.21 and CLI 0.53.16 to improve
-installation reliability in Package Center: the gateway nginx reload is declared
-only for start and stop, not for install or uninstall. The upstream version,
-daemon, authentication policy and updater behavior are unchanged. Validation is
-limited to check, build, baseline inspect and leak scans; tests and NAS checks
-were not run.
+Package 0.1.4404-0001 updates upstream magpie from 0.1.3093 to 0.1.4404 with
+SDK/App 0.53.21 and CLI 0.53.16. The packaging build restarts at 1 for a new
+upstream version. The wrapper, daemon, authentication policy and updater
+behavior are unchanged; the shipped upstream license notices follow the new
+tag. Validation is limited to check, build, inspect and leak scans; tests and
+NAS checks were not run.
 
 ## What runs
 
@@ -123,10 +123,10 @@ uninstall wizard's delete-data checkbox removes it.
 ## Build and upgrade
 
 ```sh
-bash synology/upgrade.sh v0.1.3093 2   # fetch/merge the tag, rebuild, check, build
+bash synology/upgrade.sh v0.1.4404 2   # fetch/merge the tag, rebuild, check, build
 synopkgland check --json
 synopkgland build --json               # → synology/dist/Magpie-<version>-<build>-<arch>.spk
-synopkgland inspect synology/dist/Magpie-0.1.3093-0002-x86_64.spk --json
+synopkgland inspect synology/dist/Magpie-0.1.4404-0002-x86_64.spk --json
 ```
 
 `build-source.sh` compiles the merged upstream tree (`-tags nogui`, CGO off)
